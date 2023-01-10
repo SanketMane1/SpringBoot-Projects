@@ -1,11 +1,14 @@
 package com.example.ProductService.service;
 
 import org.apache.logging.log4j.util.Supplier;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.ProductService.entity.Product;
 import com.example.ProductService.entity.ProductRequest;
+import com.example.ProductService.entity.ProductResponse;
+import com.example.ProductService.exception.ProductServiceException;
 import com.example.ProductService.repository.ProductRepository;
 
 import lombok.extern.java.Log;
@@ -35,5 +38,17 @@ public class ProductServiceImp implements ProductService {
 
 		return product.getProductId();
 	}
+
+	@Override
+	public ProductResponse getProduct(long productId) {
+		// TODO Auto-generated method stub
+		log.info("Get product for product id: {}",productId);
+		Product product=productRepository.findById(productId).orElseThrow(()-> new ProductServiceException("Product with given id not available","Product_Not_Found"));
+		ProductResponse productResponse=new ProductResponse();
+		BeanUtils.copyProperties(product, productResponse);
+		return productResponse;
+	}
+
+	
 
 }
