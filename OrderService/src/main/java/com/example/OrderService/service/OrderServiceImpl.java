@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import com.example.OrderService.controller.OrderController;
 import com.example.OrderService.entity.Order;
+import com.example.OrderService.external.client.ProductService;
 import com.example.OrderService.model.OrderRequest;
 import com.example.OrderService.repository.OrderRepository;
 
@@ -21,12 +22,19 @@ public class OrderServiceImpl implements OrderService {
 	
 	@Autowired
 	OrderRepository orderRepository;
+	
+	@Autowired
+	ProductService productService;
 
 	@Override
 	public long placeOrder(OrderRequest orderRequest) {
 		// TODO Auto-generated method stub
 		
 		log.info("Placing Order {}",orderRequest);
+		
+		productService.reduceQuantity(orderRequest.getProductId(), orderRequest.getQuantity());
+		
+		log.info("Placing Order with reduced quantity{}",orderRequest);
 		
 		Order order = new Order().builder().amount(orderRequest.getTotalAmount())
 											.orderStatus("CREATED")

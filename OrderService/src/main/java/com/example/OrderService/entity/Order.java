@@ -13,13 +13,12 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 @Entity
+@Table(name = "ORDER_DETAILS")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Table(name = "ORDER_DETAILS")
 public class Order {
 	
 	@Id
