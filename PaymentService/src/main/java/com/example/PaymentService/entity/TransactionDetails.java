@@ -16,6 +16,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
 public class TransactionDetails {
 	

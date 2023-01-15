@@ -8,4 +8,6 @@ import com.example.PaymentService.entity.TransactionDetails;
 @Repository
 public interface TransactionDetailsRepository extends JpaRepository<TransactionDetails, Long> {
 
+	TransactionDetails findByOrderId(long orderid);
+
 }
