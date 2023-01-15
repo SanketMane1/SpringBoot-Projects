@@ -23,6 +23,9 @@ public class OrderController {
 	
 	@PostMapping("/placeOrder")
 	public ResponseEntity<Long> placeOrder(@RequestBody OrderRequest orderRequest){
+		log.info("OrderRequest: {}",orderRequest);
+
+		
 		long orderId=orderService.placeOrder(orderRequest);
 		
 		log.info("Order Id: {}",orderId);

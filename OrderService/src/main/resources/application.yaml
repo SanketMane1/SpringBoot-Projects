@@ -14,9 +14,7 @@ spring:
     name: ORDER-SERVICE
   config:
     import: configserver:http://localhost:9296
-  cloud:
-    compatibility-verifier:
-      enabled: false
+
     
 management.tracing.sampling.probability: 1.0
 
