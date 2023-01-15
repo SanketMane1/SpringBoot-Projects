@@ -14,8 +14,14 @@ spring:
     name: PRODUCT-SERVICE
   config:
     import: configserver:http://localhost:9296
-    
-    
+  cloud:
+    compatibility-verifier:
+      enabled: false
+logging: 
+  pattern: 
+    level: "%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]" 
+management.tracing.sampling.probability: 1.0
+   
 #  eureka:
 #    instance:
 #      hostname: false

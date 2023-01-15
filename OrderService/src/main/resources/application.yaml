@@ -14,7 +14,16 @@ spring:
     name: ORDER-SERVICE
   config:
     import: configserver:http://localhost:9296
+  cloud:
+    compatibility-verifier:
+      enabled: false
     
+management.tracing.sampling.probability: 1.0
+
+   
+logging: 
+  pattern: 
+    level: "%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]" 
 #  eureka:
 #    instance:
 #      hostname: false
