@@ -1,5 +1,7 @@
 package com.example.ProductService.service;
 
+import org.springframework.stereotype.Service;
+
 import com.example.ProductService.entity.ProductRequest;
 import com.example.ProductService.entity.ProductResponse;
 

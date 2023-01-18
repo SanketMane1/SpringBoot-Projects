@@ -14,7 +14,6 @@ import com.example.OrderService.model.OrderRequest;
 import com.example.OrderService.model.OrderResponse;
 import com.example.OrderService.service.OrderService;
 
-import jakarta.ws.rs.GET;
 import lombok.extern.log4j.Log4j2;
 
 @RestController
