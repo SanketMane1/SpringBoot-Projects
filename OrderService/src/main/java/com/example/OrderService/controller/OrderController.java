@@ -3,6 +3,7 @@ package com.example.OrderService.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,6 +25,7 @@ public class OrderController {
 	@Autowired
 	OrderService orderService;
 	
+    @PreAuthorize("hasAuthority('Customer')")
 	@PostMapping("/placeOrder")
 	public ResponseEntity<Long> placeOrder(@RequestBody OrderRequest orderRequest){
 		log.info("OrderRequest: {}",orderRequest);
@@ -36,6 +38,8 @@ public class OrderController {
 		
 	}
 	
+    
+    @PreAuthorize("hasAuthority('Admin') || hasAuthority('Customer')")
 	@GetMapping("/{orderId}")
 	public ResponseEntity<OrderResponse> getOrderDetails(@PathVariable Long orderId){
 		OrderResponse orderResponse=orderService.getOrderDetails(orderId);
