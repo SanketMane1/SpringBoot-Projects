@@ -11,9 +11,8 @@ spring:
           clone-on-start: true
     
     
-  eureka:
+eureka:
     instance:
-      hostname: true
       preferIpAddress: true
     client:
       fetch-registry: true
